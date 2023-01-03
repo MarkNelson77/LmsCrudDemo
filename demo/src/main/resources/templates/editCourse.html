@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Course</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-<div class="container mt-5">
-    <h1 class="text-center mb-5">Edit Course</h1>
+<body class="bg-gray-100 h-screen font-sans">
+<div class="container mx-auto mt-5">
+    <h1 class="text-center mb-5 font-bold text-3xl">Edit Course</h1>
     <form method="post" action="/courses/edit" th:object="${course}" th:action="@{/courses/edit/{id}(id=${course.id})}">
-        <input type="hidden" name="_method" value="PUT">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" th:field="*{name}">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="mb-5">
+            <label class="block font-bold mb-2 text-lg" for="name">Name</label>
+            <input class="border rounded w-full py-2 px-3" id="name" type="text" th:field="*{name}" placeholder="Name">
         </div>
-        <div class="form-group">
-            <label for="level">Level</label>
-            <input type="text" class="form-control" id="level" name="level" th:field="*{level}">
+        <div class="mb-5">
+            <label class="block font-bold mb-2 text-lg" for="description">Description</label>
+            <input class="border rounded w-full py-2 px-3" id="description" type="text" th:field="*{description}" placeholder="Description">
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="withBond" name="withBond" value="true" th:field="*{withBond}">
-            <label class="form-check-label" for="withBond">With Bond</label>
+        <div class="mb-5">
+            <label class="block font-bold mb-2 text-lg" for="level">Level</label>
+            <input class="border rounded w-full py-2 px-3" id="level" type="text" th:field="*{level}" placeholder="Level">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-5">
+            <label class="inline-flex items-center" for="withBond">
+                <input class="form-checkbox" type="checkbox" id="withBond" th:field="*{withBond}" value="true">
+                <span class="ml-2">With Bond</span></label>
+        </div>
+        <div class="text-center mt-5">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Save</button>
+        </div>
     </form>
 </div>
 </body>
 </html>
+
