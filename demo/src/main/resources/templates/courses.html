@@ -13,16 +13,16 @@
     </div>
     <table class="table-auto w-full">
         <thead>
-        <tr class="text-left">
-            <th class="px-4 py-2">Name</th>
-            <th class="px-4 py-2">Description</th>
-            <th class="px-4 py-2">Level</th>
-            <th class="px-4 py-2">With Bond</th>
-            <th class="px-4 py-2"></th>
+        <tr class="text-center">
+            <th class="border-2 px-4 py-2">Name</th>
+            <th class="border-2 px-4 py-2">Description</th>
+            <th class="border-2 px-4 py-2">Level</th>
+            <th class="border-2 px-4 py-2">With Bond</th>
+            <th class="border-2 px-4 py-2">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="text-left" th:each="course : ${courses}">
+        <tr class="text-center" th:each="course : ${courses}">
             <td class="border px-4 py-2">
                 <a th:href="@{/courses/{id}(id=${course.id})}" th:text="${course.name}"></a>
             </td>
@@ -31,7 +31,7 @@
             <td class="border px-4 py-2" th:text="${course.withBond}"></td>
             <td class="border px-4 py-2">
                 <a th:href="@{/courses/edit/{id}(id=${course.id})}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
-                <form th:action="@{/courses/delete/{id}(id=${course.id})}" method="post" class="inline-block">
+                <form th:action="@{/courses/delete/{id}(id=${course.id})}" method="get" class="inline-block">
                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
                 </form>
             </td>
